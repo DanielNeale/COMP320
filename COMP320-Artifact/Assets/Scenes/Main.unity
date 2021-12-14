@@ -528,4 +528,5 @@ MonoBehaviour:
   walkSpeed: 0.1
   sprintSpeed: 0.25
   camSensitivity: 5
+  maxAngle: 60
   invert: 0

@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float camSensitivity;
     [SerializeField]
+    private float maxAngle;
+    [SerializeField]
     private bool invert;
 
 
@@ -34,7 +36,19 @@ public class PlayerMovement : MonoBehaviour
         }
         
         transform.Rotate(new Vector3(0, mouseMove.x, 0));
-        cam.Rotate(new Vector3(mouseMove.y, 0, 0));
+
+        float angle = cam.rotation.eulerAngles.x;
+
+        if (angle > 180)
+        {
+            angle -= 360;
+        }
+
+        print(angle);
+        if (!(angle + mouseMove.y > maxAngle) && !(angle + mouseMove.y < -maxAngle))
+        {
+            cam.Rotate(new Vector3(mouseMove.y, 0, 0));
+        }
     }
 
 
