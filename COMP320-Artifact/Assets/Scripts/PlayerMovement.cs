@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         character = GetComponent<CharacterController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 
@@ -44,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
             angle -= 360;
         }
 
-        print(angle);
         if (!(angle + mouseMove.y > maxAngle) && !(angle + mouseMove.y < -maxAngle))
         {
             cam.Rotate(new Vector3(mouseMove.y, 0, 0));
