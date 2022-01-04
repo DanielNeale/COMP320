@@ -5,7 +5,7 @@ using UnityEngine;
 public class shooting : MonoBehaviour
 {
     int shotCount;
-    float totalAccuracy;
+    public float totalAccuracy = 50;
     
     void Update()
     {
@@ -39,5 +39,10 @@ public class shooting : MonoBehaviour
         }
 
         return accuracy;
+    }
+
+    public float GetAccuracy()
+    {
+        return totalAccuracy;
     }
 }
