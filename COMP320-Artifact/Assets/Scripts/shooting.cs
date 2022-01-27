@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shooting : MonoBehaviour
+public class Shooting : MonoBehaviour
 {
     int shotCount;
     public float totalAccuracy = 50;
+    [SerializeField]
+    private LayerMask enemyMask;
     
     void Update()
     {
@@ -29,7 +31,7 @@ public class shooting : MonoBehaviour
 
         Ray newCast = new Ray(transform.position, transform.forward);
 
-        if (Physics.Raycast(newCast, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(newCast, out RaycastHit hit, Mathf.Infinity, enemyMask))
         {
             Vector3 centerVector = Vector3.Normalize(hit.transform.position - hit.point);
 

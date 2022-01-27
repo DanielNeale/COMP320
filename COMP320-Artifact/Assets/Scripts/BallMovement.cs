@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    public shooting gun;
+    public Shooting gun;
 
     public Vector3 upperBounds;
     public Vector3 lowerBounds;
