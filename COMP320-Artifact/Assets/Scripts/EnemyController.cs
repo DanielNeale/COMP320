@@ -41,7 +41,6 @@ public class EnemyController : MonoBehaviour
 
             visableTimer = maxVisableTime - ((maxVisableTime - minVisableTime) * (gun.GetAccuracy() / 100));
             visableTimer += Random.Range(-visableTimerVarience, visableTimerVarience);
-            print(visableTimer);
         }
     }
 
