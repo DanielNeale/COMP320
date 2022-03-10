@@ -1573,6 +1573,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1403597534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4985524149950870988, guid: 09b053c514867054c883b0449350e0ca, type: 3}
+  m_PrefabInstance: {fileID: 4985524149719698213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1403597535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403597534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f9ee814e2ed7c40884e1b7e8de60e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damageRange: []
+  damage: 10
 --- !u!1 &1407927185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,6 +2285,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4985524149719698214}
+    - target: {fileID: 2042052130089896614, guid: b0e4cf3c3e155fe43907b05ffaf9fd72, type: 3}
+      propertyPath: accuracy
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042052130089896614, guid: b0e4cf3c3e155fe43907b05ffaf9fd72, type: 3}
+      propertyPath: fireRate
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3400272742704922189, guid: b0e4cf3c3e155fe43907b05ffaf9fd72, type: 3}
       propertyPath: m_RootOrder
       value: 0

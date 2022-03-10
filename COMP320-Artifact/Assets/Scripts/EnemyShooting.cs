@@ -9,10 +9,10 @@ public class EnemyShooting : MonoBehaviour
 
     [SerializeField]
     private Vector2 accuracies;
-    private float accuracy;
+    public float accuracy;
     [SerializeField]
     private Vector2 fireRates;
-    private float fireRate;
+    public float fireRate;
     private float timer;
 
     
@@ -20,17 +20,29 @@ public class EnemyShooting : MonoBehaviour
     {
         transform.LookAt(player.position);
 
-        if (Physics.Linecast(transform.position, player.position, out RaycastHit hit) && hit.transform == player)
-        {
-            timer -= Time.fixedDeltaTime;
+        if (Physics.Linecast(transform.position, player.position, out RaycastHit hit) && hit.transform == player && timer < 0)
+        {           
+            Shoot();
+
+            timer = fireRate;
         }
 
-        Shoot();
+        timer -= Time.fixedDeltaTime;
     }
 
 
     private void Shoot()
     {
-        
+        if (Random.Range(0, 100) < accuracy)
+        {
+            print("hit");
+
+            player.GetComponent<Health>().Damage();
+        }
+
+        else
+        {
+            print("miss");
+        }       
     }
 }
