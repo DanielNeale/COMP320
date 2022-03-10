@@ -38,6 +38,8 @@ public class Shooting : MonoBehaviour
             float angle = Vector3.Angle(centerVector, newCast.direction);
 
             accuracy = 100 - angle;
+
+            hit.transform.parent.gameObject.SetActive(false);
         }
 
         return accuracy;
