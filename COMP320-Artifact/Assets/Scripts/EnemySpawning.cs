@@ -14,5 +14,10 @@ public class EnemySpawning : MonoBehaviour
         {
             enemies[i].SetActive(true);
         }
+
+        if (other.GetComponent<Health>())
+        {
+            other.GetComponent<Health>().SetRespawn(other.transform.position);
+        }
     }
 }
