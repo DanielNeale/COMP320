@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     private float[] damageRange;
     public float damage;
     private Vector3 respawnPoint;
+    private int deaths;
 
 
     private void Start()
@@ -32,12 +33,13 @@ public class Health : MonoBehaviour
         {
             transform.position = respawnPoint;
             health = maxHealth;
+            healthBar.value = health;
+            deaths++;
         }
     }
 
     public void SetRespawn(Vector3 newSpawn)
     {
-        respawnPoint = newSpawn;
-        healthBar.value = health;
+        respawnPoint = newSpawn;        
     }
 }

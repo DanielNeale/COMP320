@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     public float totalAccuracy = 50;
     [SerializeField]
     private LayerMask enemyMask;
+    private int kills;
     
     void Update()
     {
@@ -40,6 +41,7 @@ public class Shooting : MonoBehaviour
             accuracy = 100 - angle;
 
             hit.transform.parent.parent.gameObject.SetActive(false);
+            kills++;
         }
 
         return accuracy;
