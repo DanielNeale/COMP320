@@ -7,6 +7,11 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField]
     private GameObject[] enemies;
 
+    [SerializeField]
+    private GameObject openGate;
+    [SerializeField]
+    private GameObject closeGate;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,5 +24,8 @@ public class EnemySpawning : MonoBehaviour
         {
             other.GetComponent<Health>().SetRespawn(other.transform.position);
         }
+
+        openGate.SetActive(false);
+        closeGate.SetActive(true);
     }
 }
