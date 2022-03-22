@@ -10,8 +10,13 @@ public class ADController : MonoBehaviour
     private Transform[] enemyParents;
     private List<Transform> enemies = new List<Transform>();
 
-    private Queue<float> timeInSight = new Queue<float>();
+    private List<float> timeInSight = new List<float>();
     private List<bool> inSightThisSec = new List<bool>();
+    
+    private float averageInSight;
+    private float accuracy;
+    private int deaths;
+    private int kills;
 
 
     private void Start()
@@ -32,17 +37,22 @@ public class ADController : MonoBehaviour
 
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (Physics.Linecast(transform.position, player.position, out RaycastHit hit) && hit.transform == player)
+            if (enemies[i].gameObject.activeSelf == true)
             {
-                inSight = true;
-            }
+                if (Physics.Linecast(enemies[i].position, player.position, out RaycastHit hit) && hit.transform == player)
+                {
+                    inSight = true;
+                }
+
+                Debug.DrawLine(enemies[i].position, player.position, Color.red);
+            }         
         }
 
         inSightThisSec.Add(inSight);
         
         if (inSightThisSec.Count >= 50)
         {
-            int secondAverage = 0;
+            float secondAverage = 0;
 
             for (int i = 0; i < inSightThisSec.Count; i++)
             {
@@ -50,15 +60,29 @@ public class ADController : MonoBehaviour
                 {
                     secondAverage++;
                 }
+                
+            }
 
-                secondAverage /= inSightThisSec.Count;
+            secondAverage /= inSightThisSec.Count;
 
-                timeInSight.Enqueue(secondAverage);
+            inSightThisSec.Clear();
 
-                if (timeInSight.Count > 30)
-                {
-                    timeInSight.Dequeue();
-                }
+            timeInSight.Add(secondAverage);
+
+            print(secondAverage);
+
+            averageInSight = 0;
+
+            for (int i = 0; i < timeInSight.Count; i++)
+            {
+                averageInSight += timeInSight[i];
+            }
+
+            averageInSight /= timeInSight.Count;
+
+            if (timeInSight.Count > 60)
+            {
+                timeInSight.RemoveAt(0);
             }
         }
     }

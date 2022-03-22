@@ -6,6 +6,7 @@ public class Shooting : MonoBehaviour
 {
     int shotCount;
     public float totalAccuracy = 50;
+    private SortedList<float, float> recentAccuracy = new SortedList<float, float>();
     [SerializeField]
     private LayerMask enemyMask;
     private int kills;
@@ -16,12 +17,26 @@ public class Shooting : MonoBehaviour
         {
             float newAccuracy = Shoot();
 
-            totalAccuracy = ((totalAccuracy * shotCount) + newAccuracy) / (shotCount + 1);
+            recentAccuracy.Add(newAccuracy, 0);
+
+            totalAccuracy = 0;
+
+            for (int i = 0; i < recentAccuracy.Count; i++)
+            {
+                totalAccuracy += recentAccuracy[i];
+            }
+
+            totalAccuracy /= recentAccuracy.Count;
 
             shotCount++;
+        }
+    }
 
-            print(totalAccuracy);
-            print(shotCount);
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < recentAccuracy.Count; i++)
+        {
+            if(recentAccuracy.)
         }
     }
 
@@ -51,4 +66,10 @@ public class Shooting : MonoBehaviour
     {
         return totalAccuracy;
     }
+}
+
+
+public class RecentAccuracies
+{
+
 }
