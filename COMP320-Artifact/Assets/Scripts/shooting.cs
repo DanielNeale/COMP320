@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    int shotCount;
     public float totalAccuracy = 50;
-    private SortedList<float, float> recentAccuracy = new SortedList<float, float>();
+    private List<RecentAccuracies> recentAccuracy = new List<RecentAccuracies>();
     [SerializeField]
     private LayerMask enemyMask;
     private int kills;
@@ -17,18 +16,16 @@ public class Shooting : MonoBehaviour
         {
             float newAccuracy = Shoot();
 
-            recentAccuracy.Add(newAccuracy, 0);
+            recentAccuracy.Add(new RecentAccuracies(newAccuracy, 0));
 
             totalAccuracy = 0;
 
             for (int i = 0; i < recentAccuracy.Count; i++)
             {
-                totalAccuracy += recentAccuracy[i];
+                totalAccuracy += recentAccuracy[i].accuracy;
             }
 
             totalAccuracy /= recentAccuracy.Count;
-
-            shotCount++;
         }
     }
 
@@ -36,7 +33,16 @@ public class Shooting : MonoBehaviour
     {
         for (int i = 0; i < recentAccuracy.Count; i++)
         {
-            if(recentAccuracy.)
+            if (recentAccuracy[i].timer < 60)
+            {
+                recentAccuracy[i].timer += Time.fixedDeltaTime;
+            }
+
+            else
+            {
+                recentAccuracy.RemoveAt(i);
+                break;
+            }
         }
     }
 
@@ -71,5 +77,12 @@ public class Shooting : MonoBehaviour
 
 public class RecentAccuracies
 {
+    public float accuracy;
+    public float timer;
 
+    public RecentAccuracies(float acc, float tim)
+    {
+        accuracy = acc;
+        timer = tim;
+    }
 }
