@@ -7520,4 +7520,5 @@ MonoBehaviour:
   totalAccuracy: 50
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
+  kills: 0
