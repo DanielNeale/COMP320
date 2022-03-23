@@ -14,7 +14,8 @@ public class Health : MonoBehaviour
     private float[] damageRange;
     public float damage;
     private Vector3 respawnPoint;
-    private int deaths;
+    public int deaths;
+    private List<float> recentDeaths = new List<float>();
 
 
     private void Start()
@@ -23,6 +24,27 @@ public class Health : MonoBehaviour
         healthBar.maxValue = maxHealth;
         healthBar.value = health;
     }
+
+
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < recentDeaths.Count; i++)
+        {
+            if (recentDeaths[i] < 60)
+            {
+                recentDeaths[i] += Time.deltaTime;
+            }
+
+            else
+            {
+                recentDeaths.RemoveAt(i);
+                break;
+            }
+        }
+
+        deaths = recentDeaths.Count;
+    }
+
 
     public void Damage()
     {
@@ -34,7 +56,7 @@ public class Health : MonoBehaviour
             transform.position = respawnPoint;
             health = maxHealth;
             healthBar.value = health;
-            deaths++;
+            recentDeaths.Add(0);
         }
     }
 

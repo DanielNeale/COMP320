@@ -81,9 +81,7 @@ public class Shooting : MonoBehaviour
             accuracy = 100 - angle;
 
             hit.transform.parent.parent.gameObject.SetActive(false);
-            recentKills.Add(0);
-
-            
+            recentKills.Add(0);       
         }
 
         return accuracy;
