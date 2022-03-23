@@ -8,7 +8,10 @@ public class Shooting : MonoBehaviour
     private List<RecentAccuracies> recentAccuracy = new List<RecentAccuracies>();
     [SerializeField]
     private LayerMask enemyMask;
-    private int kills;
+    
+    public int kills;
+    private List<float> recentKills = new List<float>();
+
     
     void Update()
     {
@@ -44,6 +47,22 @@ public class Shooting : MonoBehaviour
                 break;
             }
         }
+
+        for (int i = 0; i < recentKills.Count; i++)
+        {
+            if (recentKills[i] < 60)
+            {
+                recentKills[i] += Time.fixedDeltaTime;
+            }
+
+            else
+            {
+                recentKills.RemoveAt(i);
+                break;
+            }
+        }
+
+        kills = recentKills.Count;
     }
 
 
@@ -62,7 +81,9 @@ public class Shooting : MonoBehaviour
             accuracy = 100 - angle;
 
             hit.transform.parent.parent.gameObject.SetActive(false);
-            kills++;
+            recentKills.Add(0);
+
+            
         }
 
         return accuracy;
@@ -70,7 +91,7 @@ public class Shooting : MonoBehaviour
 
     public float GetAccuracy()
     {
-        return totalAccuracy;
+        return (totalAccuracy);
     }
 }
 
