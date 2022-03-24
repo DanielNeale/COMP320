@@ -163,7 +163,7 @@ public class ADController : MonoBehaviour
         {
             for (int i = 0; i < enemyShootings.Count; i++)
             {
-                enemyShootings[i].SetAccuracy(kills / maxKills);
+                enemyShootings[i].SetAccuracy(1 - (kills / maxKills));
             }
         }
 
@@ -171,7 +171,7 @@ public class ADController : MonoBehaviour
         {
             for (int i = 0; i < enemyShootings.Count; i++)
             {
-                enemyShootings[i].SetAccuracy(1);
+                enemyShootings[i].SetAccuracy(0);
             }
         }
     }
