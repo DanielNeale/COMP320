@@ -9,10 +9,10 @@ public class EnemyShooting : MonoBehaviour
 
     [SerializeField]
     private Vector2 accuracies;
-    public float accuracy;
+    private float accuracy;
     [SerializeField]
     private Vector2 fireRates;
-    public float fireRate;
+    private float fireRate;
     private float timer;
 
     

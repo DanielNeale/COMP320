@@ -19,9 +19,7 @@ public class EnemyController : MonoBehaviour
     private float moveSpeed;
 
     [SerializeField]
-    private float minVisableTime = 1;
-    [SerializeField]
-    private float maxVisableTime = 3;
+    private Vector2 visableTime;
     [SerializeField]
     private float visableTimerVarience = 0.5f;
     private float visableTimer;
@@ -35,7 +33,7 @@ public class EnemyController : MonoBehaviour
         {
             inCover = !inCover;
 
-            visableTimer = maxVisableTime - ((maxVisableTime - minVisableTime) * (gun.GetAccuracy() / 100));
+            
             visableTimer += Random.Range(-visableTimerVarience, visableTimerVarience);
         }
     }
@@ -68,5 +66,6 @@ public class EnemyController : MonoBehaviour
     public void SetMoveSpeed(float point)
     {
         moveSpeed = moveSpeeds.x + ((moveSpeeds.y - moveSpeeds.x) * point);
+        visableTimer = visableTime.x - ((visableTime.y - visableTime.x) * point);
     }
 }

@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     private float health;
     [SerializeField]
     private Vector2 damageRange;
-    public float damage;
+    private float damage;
     private Vector3 respawnPoint;
     private int deaths;
     private List<float> recentDeaths = new List<float>();

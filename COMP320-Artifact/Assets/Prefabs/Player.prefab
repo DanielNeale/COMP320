@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4985524148978344861}
   - component: {fileID: 4985524148978344850}
   - component: {fileID: 4985524148978344851}
-  - component: {fileID: 6661828294502804715}
+  - component: {fileID: 1752004190896318999}
   m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -84,7 +84,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4985524148978344848}
   m_Enabled: 1
---- !u!114 &6661828294502804715
+--- !u!114 &1752004190896318999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,13 +93,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4985524148978344848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a3dbdb7a4408643bb4678211ed9956, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eda8c3adbed0054299a76ca76a30a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   totalAccuracy: 50
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
+  kills: 0
 --- !u!1 &4985524149950870988
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +115,7 @@ GameObject:
   - component: {fileID: 4985524149950870990}
   - component: {fileID: 4985524149950870991}
   - component: {fileID: 4985524149950870986}
+  - component: {fileID: 7958911824544571893}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -235,3 +237,18 @@ MonoBehaviour:
   camSensitivity: 5
   maxAngle: 60
   invert: 0
+--- !u!114 &7958911824544571893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985524149950870988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f9ee814e2ed7c40884e1b7e8de60e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  maxHealth: 10
+  damageRange: {x: 0.5, y: 2}

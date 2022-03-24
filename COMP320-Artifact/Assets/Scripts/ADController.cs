@@ -19,15 +19,24 @@ public class ADController : MonoBehaviour
     private List<float> timeInSight = new List<float>();
     private List<bool> inSightThisSec = new List<bool>();
     
-    private float averageInSight;
-    private float accuracy;
-    private int deaths;
-    private int kills;
+    public float averageInSight;
+    public float accuracy;
+    public int deaths;
+    public int kills;
 
     [SerializeField]
     private int maxKills;
     [SerializeField]
     private int maxDeaths;
+
+
+    private void Awake()
+    {
+        InvokeRepeating("HandleDamage", 0, 1);
+        InvokeRepeating("HandleSpeed", 0, 1);
+        InvokeRepeating("HandleFireRate", 0, 1);
+        InvokeRepeating("HandleAccuracy", 0, 1);
+    }
 
 
     private void Start()
