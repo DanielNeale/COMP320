@@ -6,9 +6,15 @@ public class ADController : MonoBehaviour
 {
     [SerializeField]
     private Transform player;
+    private Health health;
+    [SerializeField]
+    private Shooting gun;
+    
     [SerializeField]
     private Transform[] enemyParents;
     private List<Transform> enemies = new List<Transform>();
+    private List<EnemyController> enemyControllers = new List<EnemyController>();
+    private List<EnemyShooting> enemyShootings = new List<EnemyShooting>();
 
     private List<float> timeInSight = new List<float>();
     private List<bool> inSightThisSec = new List<bool>();
@@ -17,6 +23,11 @@ public class ADController : MonoBehaviour
     private float accuracy;
     private int deaths;
     private int kills;
+
+    [SerializeField]
+    private int maxKills;
+    [SerializeField]
+    private int maxDeaths;
 
 
     private void Start()
@@ -28,6 +39,14 @@ public class ADController : MonoBehaviour
                 enemies.Add(enemyParents[i].GetChild(j));
             }
         }
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemyControllers.Add(enemies[i].GetComponent<EnemyController>());
+            enemyShootings.Add(enemies[i].GetComponentInChildren<EnemyShooting>());
+        }
+
+        health = player.GetComponent<Health>();
     }
 
 
@@ -49,7 +68,7 @@ public class ADController : MonoBehaviour
         }
 
         inSightThisSec.Add(inSight);
-        
+
         if (inSightThisSec.Count >= 50)
         {
             float secondAverage = 0;
@@ -60,29 +79,90 @@ public class ADController : MonoBehaviour
                 {
                     secondAverage++;
                 }
-                
             }
 
             secondAverage /= inSightThisSec.Count;
 
             inSightThisSec.Clear();
 
-            timeInSight.Add(secondAverage);
-
-            print(secondAverage);
-
-            averageInSight = 0;
-
-            for (int i = 0; i < timeInSight.Count; i++)
-            {
-                averageInSight += timeInSight[i];
-            }
-
-            averageInSight /= timeInSight.Count;
+            timeInSight.Add(secondAverage);           
 
             if (timeInSight.Count > 60)
             {
                 timeInSight.RemoveAt(0);
+            }
+        }        
+    }
+
+
+    private void GetInSight()
+    {
+        averageInSight = 0;
+
+        for (int i = 0; i < timeInSight.Count; i++)
+        {
+            averageInSight += timeInSight[i];
+        }
+
+        averageInSight /= timeInSight.Count;
+    }
+
+
+    private void HandleDamage()
+    {
+        deaths = health.GetDeaths();
+
+        if (deaths < maxDeaths)
+        {
+            health.SetDamage(1 - (deaths / maxDeaths));
+        }
+
+        else
+        {
+            health.SetDamage(0);
+        }
+    }
+
+
+    private void HandleSpeed()
+    {
+        accuracy = gun.GetAccuracy();
+
+        for (int i = 0; i < enemyControllers.Count; i++)
+        {
+            enemyControllers[i].SetMoveSpeed(accuracy);
+        }
+    }
+
+
+    private void HandleFireRate()
+    {
+        GetInSight();
+
+        for (int i = 0; i < enemyShootings.Count; i++)
+        {
+            enemyShootings[i].SetFireRate(averageInSight);
+        }
+    }
+
+
+    private void HandleAccuracy()
+    {
+        kills = gun.GetKills();
+
+        if (kills < maxKills)
+        {
+            for (int i = 0; i < enemyShootings.Count; i++)
+            {
+                enemyShootings[i].SetAccuracy(kills / maxKills);
+            }
+        }
+
+        else
+        {
+            for (int i = 0; i < enemyShootings.Count; i++)
+            {
+                enemyShootings[i].SetAccuracy(1);
             }
         }
     }

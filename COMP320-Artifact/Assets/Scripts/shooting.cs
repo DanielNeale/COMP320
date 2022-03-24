@@ -78,7 +78,7 @@ public class Shooting : MonoBehaviour
 
             float angle = Vector3.Angle(centerVector, newCast.direction);
 
-            accuracy = 100 - angle;
+            accuracy = (100 - angle) / 100;
 
             hit.transform.parent.parent.gameObject.SetActive(false);
             recentKills.Add(0);       
@@ -87,9 +87,16 @@ public class Shooting : MonoBehaviour
         return accuracy;
     }
 
+
     public float GetAccuracy()
     {
         return (totalAccuracy);
+    }
+
+
+    public int GetKills()
+    {
+        return kills;
     }
 }
 

@@ -11,10 +11,10 @@ public class Health : MonoBehaviour
     private float maxHealth;
     private float health;
     [SerializeField]
-    private float[] damageRange;
+    private Vector2 damageRange;
     public float damage;
     private Vector3 respawnPoint;
-    public int deaths;
+    private int deaths;
     private List<float> recentDeaths = new List<float>();
 
 
@@ -63,5 +63,17 @@ public class Health : MonoBehaviour
     public void SetRespawn(Vector3 newSpawn)
     {
         respawnPoint = newSpawn;        
+    }
+
+
+    public int GetDeaths()
+    {
+        return deaths;
+    }
+
+
+    public void SetDamage(float point)
+    {
+        damage = damageRange.x + ((damageRange.y - damageRange.x) * point);
     }
 }

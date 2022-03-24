@@ -15,9 +15,7 @@ public class EnemyController : MonoBehaviour
     private Transform shootPoint;
 
     [SerializeField]
-    private float minMoveSpeed = 0.1f;
-    [SerializeField]
-    private float maxMoveSpeed = 0.4f;
+    private Vector2 moveSpeeds;
     private float moveSpeed;
 
     [SerializeField]
@@ -33,8 +31,6 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        moveSpeed = minMoveSpeed + ((maxMoveSpeed - minMoveSpeed) * (gun.GetAccuracy() / 100));
-
         if (visableTimer < 0)
         {
             inCover = !inCover;
@@ -66,5 +62,11 @@ public class EnemyController : MonoBehaviour
         Vector3 dir = Vector3.Normalize(target - body.position);
 
         body.position += dir * moveSpeed;
+    }
+
+
+    public void SetMoveSpeed(float point)
+    {
+        moveSpeed = moveSpeeds.x + ((moveSpeeds.y - moveSpeeds.x) * point);
     }
 }

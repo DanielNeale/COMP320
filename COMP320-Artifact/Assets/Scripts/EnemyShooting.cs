@@ -35,14 +35,19 @@ public class EnemyShooting : MonoBehaviour
     {
         if (Random.Range(0, 100) < accuracy)
         {
-            print("hit");
-
             player.GetComponent<Health>().Damage();
-        }
+        }     
+    }
 
-        else
-        {
-            print("miss");
-        }       
+
+    public void SetAccuracy(float point)
+    {
+        accuracy = accuracies.x + ((accuracies.y - accuracies.x) * point);
+    }
+
+
+    public void SetFireRate(float point)
+    {
+        fireRate = fireRates.x + ((fireRates.y - fireRates.x) * point);
     }
 }
