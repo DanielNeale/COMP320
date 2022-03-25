@@ -12,6 +12,21 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField]
     private GameObject closeGate;
 
+    [SerializeField]
+    private bool startActive;
+
+
+    private void Start()
+    {
+        if (startActive)
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i].SetActive(true);
+            }
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

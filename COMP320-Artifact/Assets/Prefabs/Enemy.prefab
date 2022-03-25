@@ -149,7 +149,7 @@ MonoBehaviour:
   coverPoint: {fileID: 3400272742761812938}
   shootPoint: {fileID: 3400272743021314773}
   moveSpeeds: {x: 0.1, y: 0.4}
-  visableTime: {x: 0.7, y: 2.8}
+  visableTimes: {x: 0.7, y: 3}
   visableTimerVarience: 0.3
 --- !u!1 &3400272742761812939
 GameObject:

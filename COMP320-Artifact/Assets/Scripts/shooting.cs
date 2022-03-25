@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float totalAccuracy = 50;
+    public float totalAccuracy = 0.5f;
     private List<RecentAccuracies> recentAccuracy = new List<RecentAccuracies>();
     [SerializeField]
     private LayerMask enemyMask;
