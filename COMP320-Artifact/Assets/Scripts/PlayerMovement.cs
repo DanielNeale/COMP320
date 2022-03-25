@@ -22,9 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         character = GetComponent<CharacterController>();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
 

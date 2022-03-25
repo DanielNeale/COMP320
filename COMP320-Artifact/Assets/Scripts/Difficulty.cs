@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class Difficulty : MonoBehaviour
 {
-    public enum Diff {Easy, Normal, Hard};
-
     [SerializeField]
     private float easyMod;
     [SerializeField]
     private float hardMod;
 
 
-    public void SetDiff(Diff newDiff)
+    public void SetDiff(int newDiff)
     {
-        if (newDiff == Diff.Easy)
+        if (newDiff == 0)
         {
             GetComponent<ADController>().SetDiffMod(easyMod);
         }
 
-        else if (newDiff == Diff.Normal)
+        else if (newDiff == 1)
         {
             GetComponent<ADController>().SetDiffMod(0);
         }
 
-        else if (newDiff == Diff.Hard)
+        else if (newDiff == 2)
         {
             GetComponent<ADController>().SetDiffMod(hardMod);
         }
