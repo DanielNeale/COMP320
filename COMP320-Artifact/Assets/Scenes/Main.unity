@@ -4511,6 +4511,7 @@ GameObject:
   - component: {fileID: 1312828741}
   - component: {fileID: 1312828743}
   - component: {fileID: 1312828744}
+  - component: {fileID: 1312828745}
   m_Layer: 0
   m_Name: ADcontroller
   m_TagString: Untagged
@@ -4585,6 +4586,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consentForm: {fileID: 1442436688}
   difficulty: {fileID: 193214332}
+--- !u!114 &1312828745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312828740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368b4a7a323ba054f9dbdb352322c342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1316015908
 PrefabInstance:
   m_ObjectHideFlags: 0

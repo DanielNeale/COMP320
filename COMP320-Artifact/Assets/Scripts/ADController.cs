@@ -24,6 +24,8 @@ public class ADController : MonoBehaviour
     public int deaths;
     public int kills;
 
+    private float[] skills = new float[4];
+
     [SerializeField]
     private int maxKills;
     [SerializeField]
@@ -126,11 +128,15 @@ public class ADController : MonoBehaviour
         if (deaths < maxDeaths)
         {
             health.SetDamage((1 - (deaths / maxDeaths)) + diffMod);
+
+            skills[0] = (1 - (deaths / maxDeaths)) + diffMod;
         }
 
         else
         {
             health.SetDamage(0 + diffMod);
+
+            skills[0] = 0 + diffMod;
         }
     }
 
@@ -141,8 +147,10 @@ public class ADController : MonoBehaviour
 
         for (int i = 0; i < enemyControllers.Count; i++)
         {
-            enemyControllers[i].SetMoveSpeed(accuracy - diffMod);
+            enemyControllers[i].SetMoveSpeed(accuracy - diffMod);          
         }
+
+        skills[1] = accuracy - diffMod;
     }
 
 
@@ -152,8 +160,10 @@ public class ADController : MonoBehaviour
 
         for (int i = 0; i < enemyShootings.Count; i++)
         {
-            enemyShootings[i].SetFireRate(averageInSight - diffMod);
+            enemyShootings[i].SetFireRate(averageInSight - diffMod);            
         }
+
+        skills[2] = averageInSight - diffMod;
     }
 
 
@@ -165,8 +175,10 @@ public class ADController : MonoBehaviour
         {
             for (int i = 0; i < enemyShootings.Count; i++)
             {
-                enemyShootings[i].SetAccuracy(kills / maxKills + diffMod);
+                enemyShootings[i].SetAccuracy((kills / maxKills) + diffMod);
             }
+
+            skills[3] = (kills / maxKills) + diffMod;
         }
 
         else
@@ -175,7 +187,17 @@ public class ADController : MonoBehaviour
             {
                 enemyShootings[i].SetAccuracy(1 + diffMod);
             }
+
+            skills[3] = 1 + diffMod;
         }
+    }
+
+
+    private void AddSkills()
+    {
+        float newSkill = skills[0] + skills[1] + skills[2] + skills[3];
+
+        GetComponent<DataCollection>().AddSkill(newSkill);
     }
 
 

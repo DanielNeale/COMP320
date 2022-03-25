@@ -8,6 +8,10 @@ public class GameController : MonoBehaviour
     private GameObject consentForm;
     [SerializeField]
     private GameObject difficulty;
+    [SerializeField]
+    private GameObject survey;
+    [SerializeField]
+    private int gameLength;
 
 
     private void Start()
@@ -36,5 +40,13 @@ public class GameController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+
+    IEnumerator GameTime()
+    {
+        yield return new WaitForSeconds(gameLength);
+
+
     }
 }
