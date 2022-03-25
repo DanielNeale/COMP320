@@ -4586,6 +4586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consentForm: {fileID: 1442436688}
   difficulty: {fileID: 193214332}
+  survey: {fileID: 0}
+  gameLength: 60
 --- !u!114 &1312828745
 MonoBehaviour:
   m_ObjectHideFlags: 0
