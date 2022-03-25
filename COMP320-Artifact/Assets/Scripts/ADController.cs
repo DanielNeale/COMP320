@@ -40,6 +40,7 @@ public class ADController : MonoBehaviour
         InvokeRepeating("HandleSpeed", 0, 1);
         InvokeRepeating("HandleFireRate", 0, 1);
         InvokeRepeating("HandleAccuracy", 0, 1);
+        InvokeRepeating("AddSkills", 10, 10);
     }
 
 
@@ -196,6 +197,8 @@ public class ADController : MonoBehaviour
     private void AddSkills()
     {
         float newSkill = skills[0] + skills[1] + skills[2] + skills[3];
+
+        print(newSkill);
 
         GetComponent<DataCollection>().AddSkill(newSkill);
     }

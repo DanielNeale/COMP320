@@ -40,6 +40,8 @@ public class GameController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        StartCoroutine(GameTime());
     }
 
 
@@ -47,6 +49,6 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(gameLength);
 
-
+        GetComponent<DataCollection>().GenerateFile();
     }
 }
