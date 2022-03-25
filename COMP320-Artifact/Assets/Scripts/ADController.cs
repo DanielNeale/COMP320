@@ -29,6 +29,8 @@ public class ADController : MonoBehaviour
     [SerializeField]
     private int maxDeaths;
 
+    private float diffMod = 0;
+
 
     private void Awake()
     {
@@ -123,12 +125,12 @@ public class ADController : MonoBehaviour
 
         if (deaths < maxDeaths)
         {
-            health.SetDamage(1 - (deaths / maxDeaths));
+            health.SetDamage((1 - (deaths / maxDeaths)) + diffMod);
         }
 
         else
         {
-            health.SetDamage(0);
+            health.SetDamage(0 + diffMod);
         }
     }
 
@@ -139,7 +141,7 @@ public class ADController : MonoBehaviour
 
         for (int i = 0; i < enemyControllers.Count; i++)
         {
-            enemyControllers[i].SetMoveSpeed(accuracy);
+            enemyControllers[i].SetMoveSpeed(accuracy - diffMod);
         }
     }
 
@@ -150,7 +152,7 @@ public class ADController : MonoBehaviour
 
         for (int i = 0; i < enemyShootings.Count; i++)
         {
-            enemyShootings[i].SetFireRate(averageInSight);
+            enemyShootings[i].SetFireRate(averageInSight - diffMod);
         }
     }
 
@@ -163,7 +165,7 @@ public class ADController : MonoBehaviour
         {
             for (int i = 0; i < enemyShootings.Count; i++)
             {
-                enemyShootings[i].SetAccuracy(1 - (kills / maxKills));
+                enemyShootings[i].SetAccuracy(kills / maxKills + diffMod);
             }
         }
 
@@ -171,8 +173,14 @@ public class ADController : MonoBehaviour
         {
             for (int i = 0; i < enemyShootings.Count; i++)
             {
-                enemyShootings[i].SetAccuracy(0);
+                enemyShootings[i].SetAccuracy(1 + diffMod);
             }
         }
+    }
+
+
+    public void SetDiffMod(float newMod)
+    {
+        diffMod = newMod;
     }
 }
