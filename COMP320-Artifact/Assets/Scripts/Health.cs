@@ -72,6 +72,15 @@ public class Health : MonoBehaviour
     }
 
 
+    public void SetDeaths(int value)
+    {
+        for (int i = 0; i < value; i++)
+        {
+            recentDeaths.Add(i * 5);
+        }
+    }
+
+
     public void SetDamage(float point)
     {
         damage = damageRange.x + ((damageRange.y - damageRange.x) * point);

@@ -20,7 +20,7 @@ public class DataCollection : MonoBehaviour
 
     public void GenerateFile()
     {
-        string filePath = Application.dataPath + "/" + Random.Range(0, 999999999) + ".json";
+        string filePath = Application.dataPath + "/" + Random.Range(0, 999999999) + ".csv";
         string data = "";
 
         for (int i = 0; i < skillLevel.Count; i++)
@@ -29,7 +29,5 @@ public class DataCollection : MonoBehaviour
         }
 
         System.IO.File.WriteAllText(filePath, data);
-
-        print("eh");
     }
 }

@@ -122,6 +122,15 @@ public class ADController : MonoBehaviour
     }
 
 
+    private void SetInSight(float value)
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            timeInSight.Add(value);
+        }
+    }
+
+
     private void HandleDamage()
     {
         deaths = health.GetDeaths();
@@ -130,14 +139,14 @@ public class ADController : MonoBehaviour
         {
             health.SetDamage((1 - (deaths / maxDeaths)) + diffMod);
 
-            skills[0] = (1 - (deaths / maxDeaths)) + diffMod;
+            skills[0] = (1 - (deaths / maxDeaths));
         }
 
         else
         {
             health.SetDamage(0 + diffMod);
 
-            skills[0] = 0 + diffMod;
+            skills[0] = 0;
         }
     }
 
@@ -151,7 +160,7 @@ public class ADController : MonoBehaviour
             enemyControllers[i].SetMoveSpeed(accuracy - diffMod);          
         }
 
-        skills[1] = accuracy - diffMod;
+        skills[1] = accuracy;
     }
 
 
@@ -164,7 +173,7 @@ public class ADController : MonoBehaviour
             enemyShootings[i].SetFireRate(averageInSight - diffMod);            
         }
 
-        skills[2] = averageInSight - diffMod;
+        skills[2] = averageInSight;
     }
 
 
@@ -179,7 +188,7 @@ public class ADController : MonoBehaviour
                 enemyShootings[i].SetAccuracy((kills / maxKills) + diffMod);
             }
 
-            skills[3] = (kills / maxKills) + diffMod;
+            skills[3] = (kills / maxKills);
         }
 
         else
@@ -189,7 +198,7 @@ public class ADController : MonoBehaviour
                 enemyShootings[i].SetAccuracy(1 + diffMod);
             }
 
-            skills[3] = 1 + diffMod;
+            skills[3] = 1;
         }
     }
 
@@ -207,5 +216,14 @@ public class ADController : MonoBehaviour
     public void SetDiffMod(float newMod)
     {
         diffMod = newMod;
+    }
+
+
+    public void SetStats(int kills, float accuracy, int deaths, float inView)
+    {
+        gun.SetKills(kills);
+        gun.SetAccuracy(accuracy);
+        health.SetDeaths(deaths);
+        SetInSight(inView);
     }
 }

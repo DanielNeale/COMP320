@@ -94,9 +94,27 @@ public class Shooting : MonoBehaviour
     }
 
 
+    public void SetAccuracy(float value)
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            recentAccuracy.Add(new RecentAccuracies(value, i * 2));
+        }
+    }
+
+
     public int GetKills()
     {
         return kills;
+    }
+
+
+    public void SetKills(int value)
+    {
+        for (int i = 0; i < value; i++)
+        {
+            recentKills.Add(i * 2);
+        }
     }
 }
 
