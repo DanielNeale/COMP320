@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     private int gameLength;
 
 
-    private void Start()
+    private void Awake()
     {
         consentForm.SetActive(true);
 

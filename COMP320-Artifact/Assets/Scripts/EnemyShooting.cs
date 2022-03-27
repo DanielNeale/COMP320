@@ -33,6 +33,8 @@ public class EnemyShooting : MonoBehaviour
 
     private void Shoot()
     {
+        print(accuracy);
+
         if (Random.Range(0, 100) < accuracy)
         {
             player.GetComponent<Health>().Damage();

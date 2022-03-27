@@ -24,6 +24,11 @@ public class ADController : MonoBehaviour
     private int deaths;
     private int kills;
 
+    private float fxdAverageInSight;
+    private float fxdAccuracy;
+    private int fxdDeaths;
+    private int fxdKills;
+
     private float[] skills = new float[4];
 
     [SerializeField]
@@ -32,21 +37,9 @@ public class ADController : MonoBehaviour
     private int maxDeaths;
 
     [SerializeField]
-    private bool enableAD = true;
     private bool stopAD = false;
 
     private float diffMod = 0;
-
-
-    private void Awake()
-    {
-        InvokeRepeating("HandleDamage", 0, 1);
-        InvokeRepeating("HandleSpeed", 0, 1);
-        InvokeRepeating("HandleFireRate", 0, 1);
-        InvokeRepeating("HandleAccuracy", 0, 1);
-        InvokeRepeating("AddSkills", 10, 10);
-        Invoke("StopAD", 0.2f);
-    }
 
 
     private void Start()
@@ -67,7 +60,13 @@ public class ADController : MonoBehaviour
 
         health = player.GetComponent<Health>();
 
-        GetComponent<DataCollection>().SetADEnabled(enableAD);
+        GetComponent<DataCollection>().SetADEnabled(!stopAD);
+
+        InvokeRepeating("HandleDamage", 0, 1);
+        InvokeRepeating("HandleSpeed", 0, 1);
+        InvokeRepeating("HandleFireRate", 0, 1);
+        InvokeRepeating("HandleAccuracy", 0, 1);
+        InvokeRepeating("AddSkills", 10, 10);
     }
 
 
@@ -116,15 +115,6 @@ public class ADController : MonoBehaviour
     }
 
 
-    private void StopAD()
-    {
-        if (!enableAD)
-        {
-            stopAD = true;
-        }
-    }
-
-
     private void GetInSight()
     {
         averageInSight = 0;
@@ -151,24 +141,25 @@ public class ADController : MonoBehaviour
     {
         deaths = health.GetDeaths();
 
-        if (deaths < maxDeaths)
+        if (stopAD)
         {
-            if (stopAD)
+            if (deaths < maxDeaths)
             {
                 health.SetDamage((1 - (deaths / maxDeaths)) + diffMod);
+                skills[0] = (1 - (deaths / maxDeaths));
             }
 
-            skills[0] = (1 - (deaths / maxDeaths));
+            else
+            {
+                health.SetDamage(0 + diffMod);
+                skills[0] = 0;
+            }
         }
 
         else
         {
-            if (stopAD)
-            {
-                health.SetDamage(0 + diffMod);
-            }
-
-            skills[0] = 0;
+            health.SetDamage((1 - (fxdDeaths / maxDeaths)) + diffMod);
+            skills[0] = (1 - (deaths / maxDeaths));
         }
     }
 
@@ -181,9 +172,17 @@ public class ADController : MonoBehaviour
         {
             for (int i = 0; i < enemyControllers.Count; i++)
             {
+                enemyControllers[i].SetMoveSpeed(fxdAccuracy - diffMod);
+            }
+        }
+
+        else
+        {
+            for (int i = 0; i < enemyControllers.Count; i++)
+            {
                 enemyControllers[i].SetMoveSpeed(accuracy - diffMod);
             }
-        }  
+        }
 
         skills[1] = accuracy;
     }
@@ -194,6 +193,14 @@ public class ADController : MonoBehaviour
         GetInSight();
 
         if (stopAD)
+        {
+            for (int i = 0; i < enemyShootings.Count; i++)
+            {
+                enemyShootings[i].SetFireRate(fxdAverageInSight - diffMod);
+            }
+        }
+
+        else
         {
             for (int i = 0; i < enemyShootings.Count; i++)
             {
@@ -209,30 +216,37 @@ public class ADController : MonoBehaviour
     {
         kills = gun.GetKills();
 
-        if (kills < maxKills)
+        if (stopAD)
         {
-            if (stopAD)
+            if (kills < maxKills)
             {
                 for (int i = 0; i < enemyShootings.Count; i++)
                 {
                     enemyShootings[i].SetAccuracy((kills / maxKills) + diffMod);
                 }
+
+                skills[3] = (kills / maxKills);
             }
 
-            skills[3] = (kills / maxKills);
-        }
-
-        else
-        {
-            if (stopAD)
+            else
             {
                 for (int i = 0; i < enemyShootings.Count; i++)
                 {
                     enemyShootings[i].SetAccuracy(1 + diffMod);
                 }
+
+                skills[3] = 1;
+            }
+        }
+
+        else
+        {
+            for (int i = 0; i < enemyShootings.Count; i++)
+            {
+                enemyShootings[i].SetAccuracy((fxdKills / maxKills) + diffMod);
             }
 
-            skills[3] = 1;
+            skills[3] = (kills / maxKills);
         }
     }
 
@@ -259,5 +273,10 @@ public class ADController : MonoBehaviour
         gun.SetAccuracy(accuracy);
         health.SetDeaths(deaths);
         SetInSight(inView);
+
+        fxdKills = kills;
+        fxdAccuracy = accuracy;
+        fxdDeaths = deaths;
+        fxdAverageInSight = inView;
     }
 }

@@ -5593,7 +5593,7 @@ MonoBehaviour:
   - {fileID: 668766042}
   maxKills: 30
   maxDeaths: 15
-  enableAD: 0
+  stopAD: 1
 --- !u!4 &1312828742
 Transform:
   m_ObjectHideFlags: 0
@@ -5637,7 +5637,7 @@ MonoBehaviour:
   consentForm: {fileID: 1442436688}
   difficulty: {fileID: 193214332}
   survey: {fileID: 1449824255}
-  gameLength: 30
+  gameLength: 300
 --- !u!114 &1312828745
 MonoBehaviour:
   m_ObjectHideFlags: 0
