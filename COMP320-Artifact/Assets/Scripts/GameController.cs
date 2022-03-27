@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -49,6 +50,19 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(gameLength);
 
+        survey.SetActive(true);
+
+        Time.timeScale = 0;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;      
+    }
+
+
+    public void Finish()
+    {
         GetComponent<DataCollection>().GenerateFile();
+
+        SceneManager.LoadScene(0);
     }
 }
