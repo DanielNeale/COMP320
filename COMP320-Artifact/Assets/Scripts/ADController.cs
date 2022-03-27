@@ -33,6 +33,7 @@ public class ADController : MonoBehaviour
 
     [SerializeField]
     private bool enableAD = true;
+    private bool stopAD = false;
 
     private float diffMod = 0;
 
@@ -44,6 +45,7 @@ public class ADController : MonoBehaviour
         InvokeRepeating("HandleFireRate", 0, 1);
         InvokeRepeating("HandleAccuracy", 0, 1);
         InvokeRepeating("AddSkills", 10, 10);
+        Invoke("StopAD", 0.2f);
     }
 
 
@@ -114,6 +116,15 @@ public class ADController : MonoBehaviour
     }
 
 
+    private void StopAD()
+    {
+        if (!enableAD)
+        {
+            stopAD = true;
+        }
+    }
+
+
     private void GetInSight()
     {
         averageInSight = 0;
@@ -142,7 +153,7 @@ public class ADController : MonoBehaviour
 
         if (deaths < maxDeaths)
         {
-            if (enableAD)
+            if (stopAD)
             {
                 health.SetDamage((1 - (deaths / maxDeaths)) + diffMod);
             }
@@ -152,7 +163,7 @@ public class ADController : MonoBehaviour
 
         else
         {
-            if (enableAD)
+            if (stopAD)
             {
                 health.SetDamage(0 + diffMod);
             }
@@ -166,7 +177,7 @@ public class ADController : MonoBehaviour
     {
         accuracy = gun.GetAccuracy();
 
-        if (enableAD)
+        if (stopAD)
         {
             for (int i = 0; i < enemyControllers.Count; i++)
             {
@@ -182,7 +193,7 @@ public class ADController : MonoBehaviour
     {
         GetInSight();
 
-        if (enableAD)
+        if (stopAD)
         {
             for (int i = 0; i < enemyShootings.Count; i++)
             {
@@ -200,7 +211,7 @@ public class ADController : MonoBehaviour
 
         if (kills < maxKills)
         {
-            if (enableAD)
+            if (stopAD)
             {
                 for (int i = 0; i < enemyShootings.Count; i++)
                 {
@@ -213,7 +224,7 @@ public class ADController : MonoBehaviour
 
         else
         {
-            if (enableAD)
+            if (stopAD)
             {
                 for (int i = 0; i < enemyShootings.Count; i++)
                 {
