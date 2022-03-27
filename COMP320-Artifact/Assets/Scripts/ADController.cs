@@ -31,6 +31,9 @@ public class ADController : MonoBehaviour
     [SerializeField]
     private int maxDeaths;
 
+    [SerializeField]
+    private bool enableAD = true;
+
     private float diffMod = 0;
 
 
@@ -137,14 +140,20 @@ public class ADController : MonoBehaviour
 
         if (deaths < maxDeaths)
         {
-            health.SetDamage((1 - (deaths / maxDeaths)) + diffMod);
+            if (enableAD)
+            {
+                health.SetDamage((1 - (deaths / maxDeaths)) + diffMod);
+            }
 
             skills[0] = (1 - (deaths / maxDeaths));
         }
 
         else
         {
-            health.SetDamage(0 + diffMod);
+            if (enableAD)
+            {
+                health.SetDamage(0 + diffMod);
+            }
 
             skills[0] = 0;
         }
@@ -155,10 +164,13 @@ public class ADController : MonoBehaviour
     {
         accuracy = gun.GetAccuracy();
 
-        for (int i = 0; i < enemyControllers.Count; i++)
+        if (enableAD)
         {
-            enemyControllers[i].SetMoveSpeed(accuracy - diffMod);          
-        }
+            for (int i = 0; i < enemyControllers.Count; i++)
+            {
+                enemyControllers[i].SetMoveSpeed(accuracy - diffMod);
+            }
+        }  
 
         skills[1] = accuracy;
     }
@@ -168,9 +180,12 @@ public class ADController : MonoBehaviour
     {
         GetInSight();
 
-        for (int i = 0; i < enemyShootings.Count; i++)
+        if (enableAD)
         {
-            enemyShootings[i].SetFireRate(averageInSight - diffMod);            
+            for (int i = 0; i < enemyShootings.Count; i++)
+            {
+                enemyShootings[i].SetFireRate(averageInSight - diffMod);
+            }
         }
 
         skills[2] = averageInSight;
@@ -183,9 +198,12 @@ public class ADController : MonoBehaviour
 
         if (kills < maxKills)
         {
-            for (int i = 0; i < enemyShootings.Count; i++)
+            if (enableAD)
             {
-                enemyShootings[i].SetAccuracy((kills / maxKills) + diffMod);
+                for (int i = 0; i < enemyShootings.Count; i++)
+                {
+                    enemyShootings[i].SetAccuracy((kills / maxKills) + diffMod);
+                }
             }
 
             skills[3] = (kills / maxKills);
@@ -193,9 +211,12 @@ public class ADController : MonoBehaviour
 
         else
         {
-            for (int i = 0; i < enemyShootings.Count; i++)
+            if (enableAD)
             {
-                enemyShootings[i].SetAccuracy(1 + diffMod);
+                for (int i = 0; i < enemyShootings.Count; i++)
+                {
+                    enemyShootings[i].SetAccuracy(1 + diffMod);
+                }
             }
 
             skills[3] = 1;
