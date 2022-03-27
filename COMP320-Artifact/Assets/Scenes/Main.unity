@@ -5591,13 +5591,9 @@ MonoBehaviour:
   - {fileID: 844864517}
   - {fileID: 585354376}
   - {fileID: 668766042}
-  averageInSight: 0
-  accuracy: 0
-  deaths: 0
-  kills: 0
   maxKills: 30
   maxDeaths: 15
-  enableAD: 1
+  enableAD: 0
 --- !u!4 &1312828742
 Transform:
   m_ObjectHideFlags: 0
@@ -5641,7 +5637,7 @@ MonoBehaviour:
   consentForm: {fileID: 1442436688}
   difficulty: {fileID: 193214332}
   survey: {fileID: 1449824255}
-  gameLength: 60
+  gameLength: 30
 --- !u!114 &1312828745
 MonoBehaviour:
   m_ObjectHideFlags: 0

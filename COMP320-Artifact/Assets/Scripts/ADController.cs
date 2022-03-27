@@ -19,10 +19,10 @@ public class ADController : MonoBehaviour
     private List<float> timeInSight = new List<float>();
     private List<bool> inSightThisSec = new List<bool>();
     
-    public float averageInSight;
-    public float accuracy;
-    public int deaths;
-    public int kills;
+    private float averageInSight;
+    private float accuracy;
+    private int deaths;
+    private int kills;
 
     private float[] skills = new float[4];
 
@@ -64,6 +64,8 @@ public class ADController : MonoBehaviour
         }
 
         health = player.GetComponent<Health>();
+
+        GetComponent<DataCollection>().SetADEnabled(enableAD);
     }
 
 

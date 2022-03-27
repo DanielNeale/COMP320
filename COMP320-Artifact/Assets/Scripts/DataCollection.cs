@@ -9,11 +9,9 @@ public class DataCollection : MonoBehaviour
     private float constantDiff;
     private float fun;
 
+    private string adEnabled;
+    private string diff;
 
-    private void Start()
-    {
-        
-    }
 
     public void AddSkill(float skill)
     {
@@ -23,7 +21,8 @@ public class DataCollection : MonoBehaviour
 
     public void GenerateFile()
     {
-        string filePath = Application.dataPath + "/" + Random.Range(0, 999999999) + ".csv";
+        string fileName = adEnabled + diff + Random.Range(0, 999999999);
+        string filePath = Application.dataPath + "/" + fileName + ".csv";
         string data = "";
 
         for (int i = 0; i < skillLevel.Count; i++)
@@ -46,5 +45,25 @@ public class DataCollection : MonoBehaviour
     public void SetFun(float value)
     {
         fun = value;
+    }
+
+
+    public void SetDiff(string newDiff)
+    {
+        diff = newDiff;
+    }
+
+
+    public void SetADEnabled(bool isEnabled)
+    {
+        if (isEnabled)
+        {
+            adEnabled = "y";
+        }
+
+        else
+        {
+            adEnabled = "n";
+        }
     }
 }
