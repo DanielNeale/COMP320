@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private Vector2 visableTimes;
     [SerializeField]
-    private float visableTimerVarience = 0.5f;
+    private float visableTimerVarience = 0.1f;
     private float visableTime;
     private float visableTimer;
     
@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
         {
             inCover = !inCover;
             
-            visableTimer = visableTime;
+            visableTimer = visableTime + Random.Range(-visableTimerVarience, visableTimerVarience);
         }
     }
 

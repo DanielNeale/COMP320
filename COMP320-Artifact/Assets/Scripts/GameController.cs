@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        consentForm.SetActive(true);
+
         Time.timeScale = 0;
 
         Cursor.lockState = CursorLockMode.None;

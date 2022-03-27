@@ -389,6 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116366024}
   - component: {fileID: 116366025}
+  - component: {fileID: 116366026}
   m_Layer: 5
   m_Name: Difficulty?
   m_TagString: Untagged
@@ -468,7 +469,32 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1312828745}
+        m_TargetAssemblyTypeName: DataCollection, Assembly-CSharp
+        m_MethodName: SetConstantDiff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &116366026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116366023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bb7a1b68a0ac94cbf7e9ff48935874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1339417266}
 --- !u!1 &130071241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,7 +1438,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1312828744}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: Consented
+        m_MethodName: Finish
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2576,8 +2602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -96}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532715092
 MonoBehaviour:
@@ -2612,7 +2638,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "In this study you will be asked to play a brief game and fill out a questionnaire
+    on your\r experience playing the game. The game will be collecting data as you
+    are playing. No\r personal information will be collected from you. All data collected
+    will be deleted at the end\r of the project.\r\nYou may withdraw from the study
+    at any time without reason or consequence.\r\nYour time needed for the study
+    should not exceed 10 minutes.\r\nBy continuing with the study you are agreeing
+    to the terms listed above."
 --- !u!222 &532715093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2970,6 +3002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777277716}
   - component: {fileID: 777277717}
+  - component: {fileID: 777277718}
   m_Layer: 5
   m_Name: Fun?
   m_TagString: Untagged
@@ -3049,7 +3082,32 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1312828745}
+        m_TargetAssemblyTypeName: DataCollection, Assembly-CSharp
+        m_MethodName: SetFun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &777277718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777277715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bb7a1b68a0ac94cbf7e9ff48935874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 2108389598}
 --- !u!1 &783933698 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3400272742704922191, guid: b0e4cf3c3e155fe43907b05ffaf9fd72, type: 3}
@@ -3665,7 +3723,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5094,7 +5152,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5377,7 +5435,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5582,7 +5640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consentForm: {fileID: 1442436688}
   difficulty: {fileID: 193214332}
-  survey: {fileID: 0}
+  survey: {fileID: 1449824255}
   gameLength: 60
 --- !u!114 &1312828745
 MonoBehaviour:
@@ -6268,7 +6326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1442436689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6306,7 +6364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449824256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8089,7 +8147,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9679,7 +9737,7 @@ GameObject:
   - component: {fileID: 2108389599}
   - component: {fileID: 2108389598}
   m_Layer: 5
-  m_Name: DifficultNum (1)
+  m_Name: FunNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
