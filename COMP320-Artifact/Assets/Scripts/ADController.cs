@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Main controler for the AD system
+/// Takes in player data and sends it out to enemies
+/// </summary>
 public class ADController : MonoBehaviour
 {
+    //Player classes
     [SerializeField]
     private Transform player;
     private Health health;
     [SerializeField]
     private Shooting gun;
     
+    //Enemy classes
     [SerializeField]
     private Transform[] enemyParents;
     private List<Transform> enemies = new List<Transform>();
@@ -19,11 +25,13 @@ public class ADController : MonoBehaviour
     private List<float> timeInSight = new List<float>();
     private List<bool> inSightThisSec = new List<bool>();
     
+    //Player performnce averages
     private float averageInSight;
     private float accuracy;
     private int deaths;
     private int kills;
 
+    //Value for fixed difficulty
     private float fxdAverageInSight;
     private float fxdAccuracy;
     private int fxdDeaths;
@@ -42,6 +50,10 @@ public class ADController : MonoBehaviour
     private float diffMod = 0;
 
 
+    /// <summary>
+    /// Adds all enemy classes from parent object
+    /// Starts AD systems
+    /// </summary>
     private void Start()
     {
         for (int i = 0; i < enemyParents.Length; i++)
