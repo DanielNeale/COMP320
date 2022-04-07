@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles chackpoint behaviour
+/// </summary>
 public class EnemySpawning : MonoBehaviour
 {
     [SerializeField]
@@ -16,6 +19,9 @@ public class EnemySpawning : MonoBehaviour
     private bool startActive;
 
 
+    /// <summary>
+    /// Sets starting enemies to active
+    /// </summary>
     private void Start()
     {
         if (startActive)
@@ -28,6 +34,10 @@ public class EnemySpawning : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Sets enemies to active and player checkpoint
+    /// </summary>
+    /// <param name="other"> other collider </param>
     private void OnTriggerEnter(Collider other)
     {
         for (int i = 0; i < enemies.Length; i++)

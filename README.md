@@ -4,3 +4,7 @@ It consists of a simple shooter level the particiapnt will play for 5 minutes. D
 
 V1.0
 Artefact is fuctionally complete, code is generally messy and not refactored. There are no major issues with framerate.
+
+v1.1
+Artefact is fully commented
+

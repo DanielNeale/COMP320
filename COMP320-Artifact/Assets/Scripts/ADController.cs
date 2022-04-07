@@ -82,6 +82,9 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Calculates average in sight
+    /// </summary>
     private void FixedUpdate()
     {
         bool inSight = false;
@@ -127,6 +130,9 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Returns the average in sight
+    /// </summary>
     private void GetInSight()
     {
         averageInSight = 0;
@@ -140,6 +146,10 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Set's defualt in sight value
+    /// </summary>
+    /// <param name="value"> Decimal value of time in sight </param>
     private void SetInSight(float value)
     {
         for (int i = 0; i < 30; i++)
@@ -149,6 +159,9 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Takes player deaths and sets enemy damage
+    /// </summary>
     private void HandleDamage()
     {
         deaths = health.GetDeaths();
@@ -176,6 +189,9 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Gets player accuracy and sets enemy move speed
+    /// </summary>
     private void HandleSpeed()
     {
         accuracy = gun.GetAccuracy();
@@ -200,6 +216,9 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Takes player's time in sight and sets enemy fire rate
+    /// </summary>
     private void HandleFireRate()
     {
         GetInSight();
@@ -224,6 +243,9 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Takes player's kills and sets enemy accuracy
+    /// </summary>
     private void HandleAccuracy()
     {
         kills = gun.GetKills();
@@ -263,6 +285,9 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Adds the skill rating t othe data collector
+    /// </summary>
     private void AddSkills()
     {
         float newSkill = skills[0] + skills[1] + skills[2] + skills[3];
@@ -273,12 +298,23 @@ public class ADController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Sets the difficulty modifier
+    /// </summary>
+    /// <param name="newMod"> New modifier </param>
     public void SetDiffMod(float newMod)
     {
         diffMod = newMod;
     }
 
 
+    /// <summary>
+    /// Sets the starting stats
+    /// </summary>
+    /// <param name="kills"> Starting kills </param>
+    /// <param name="accuracy"> Starting player accuracy </param>
+    /// <param name="deaths"> Starting deaths </param>
+    /// <param name="inView"> Staring time in sight </param>
     public void SetStats(int kills, float accuracy, int deaths, float inView)
     {
         gun.SetKills(kills);

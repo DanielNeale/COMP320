@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles enemy shooting
+/// </summary>
 public class EnemyShooting : MonoBehaviour
 {
     [SerializeField]
@@ -16,6 +19,9 @@ public class EnemyShooting : MonoBehaviour
     private float timer;
 
     
+    /// <summary>
+    /// Looks at player and handles when to attept a shot
+    /// </summary>
     void FixedUpdate()
     {
         transform.LookAt(player.position);
@@ -31,6 +37,9 @@ public class EnemyShooting : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Handles shooting
+    /// </summary>
     private void Shoot()
     {
         print(accuracy);
@@ -42,12 +51,20 @@ public class EnemyShooting : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Sets the accuracy of this enemy
+    /// </summary>
+    /// <param name="point"> The accuracy value </param>
     public void SetAccuracy(float point)
     {
         accuracy = accuracies.x + ((accuracies.y - accuracies.x) * point);
     }
 
 
+    /// <summary>
+    /// Sets the fire rate of this enemy
+    /// </summary>
+    /// <param name="point"> The fire rate value </param>
     public void SetFireRate(float point)
     {
         fireRate = fireRates.x + ((fireRates.y - fireRates.x) * point);

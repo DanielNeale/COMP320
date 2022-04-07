@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles shooting, accuracy and kills
+/// </summary>
 public class Shooting : MonoBehaviour
 {
     public float totalAccuracy = 0.5f;
@@ -13,6 +16,9 @@ public class Shooting : MonoBehaviour
     private List<float> recentKills = new List<float>();
 
     
+    /// <summary>
+    /// Shoots and adds an accuracy
+    /// </summary>
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -32,6 +38,9 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes accuracies and kills after 60 seconds
+    /// </summary>
     private void FixedUpdate()
     {
         for (int i = 0; i < recentAccuracy.Count; i++)
@@ -66,6 +75,10 @@ public class Shooting : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Handles a shot
+    /// </summary>
+    /// <returns> The accuracy of the shot </returns>
     private float Shoot()
     {
         float accuracy = 0;
@@ -88,12 +101,20 @@ public class Shooting : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Returns the accuracy
+    /// </summary>
+    /// <returns> Current player accuracy </returns>
     public float GetAccuracy()
     {
         return (totalAccuracy);
     }
 
 
+    /// <summary>
+    /// Sets the player's accuracy
+    /// </summary>
+    /// <param name="value"> New accuracy </param>
     public void SetAccuracy(float value)
     {
         for (int i = 0; i < 15; i++)
@@ -103,12 +124,20 @@ public class Shooting : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Returns the number of kills
+    /// </summary>
+    /// <returns> Current number of kills </returns>
     public int GetKills()
     {
         return kills;
     }
 
 
+    /// <summary>
+    /// Sets the player's kills
+    /// </summary>
+    /// <param name="value"> Number of kills </param>
     public void SetKills(int value)
     {
         for (int i = 0; i < value; i++)

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls the enemy's movement
+/// </summary>
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField]
-    private Shooting gun;
-
     [SerializeField]
     private Transform body;
     [SerializeField]
@@ -28,6 +28,9 @@ public class EnemyController : MonoBehaviour
     private bool inCover = true;
 
 
+    /// <summary>
+    /// Handles the timer for enemy visability
+    /// </summary>
     private void Update()
     {
         if (visableTimer < 0)
@@ -39,6 +42,9 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Controls enemy movement
+    /// </summary>
     private void FixedUpdate()
     {
         if (inCover && Vector3.Distance(body.position, coverPoint.position) > 0.15f)
@@ -55,6 +61,10 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Moves the enemy
+    /// </summary>
+    /// <param name="target"> Direction to move the enemy </param>
     private void Move(Vector3 target)
     {
         Vector3 dir = Vector3.Normalize(target - body.position);
@@ -63,6 +73,10 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Sets the enemy speed
+    /// </summary>
+    /// <param name="point"> Enemy speed value </param>
     public void SetMoveSpeed(float point)
     {
         moveSpeed = moveSpeeds.x + ((moveSpeeds.y - moveSpeeds.x) * point);

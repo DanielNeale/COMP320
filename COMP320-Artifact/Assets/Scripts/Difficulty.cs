@@ -10,6 +10,10 @@ public class Difficulty : MonoBehaviour
     private float hardMod;
 
 
+    /// <summary>
+    /// Sets difficulty values
+    /// </summary>
+    /// <param name="newDiff"> The player's difficulty input </param>
     public void SetDiff(int newDiff)
     {
         ADController controller = GetComponent<ADController>();

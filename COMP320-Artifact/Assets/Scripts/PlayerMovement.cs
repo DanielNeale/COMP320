@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles player movement
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController character;
@@ -25,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Handles camera movement
+    /// </summary>
     private void Update()
     {
         Vector2 mouseMove = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
@@ -50,7 +56,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Handles player movement
+    /// </summary>
     private void FixedUpdate()
     {
         Vector3 dir = Vector3.zero;
