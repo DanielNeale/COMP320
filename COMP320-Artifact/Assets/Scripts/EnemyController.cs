@@ -29,24 +29,17 @@ public class EnemyController : MonoBehaviour
 
 
     /// <summary>
-    /// Handles the timer for enemy visability
-    /// </summary>
-    private void Update()
-    {
-        if (visableTimer < 0)
-        {
-            inCover = !inCover;
-            
-            visableTimer = visableTime + Random.Range(-visableTimerVarience, visableTimerVarience);
-        }
-    }
-
-
-    /// <summary>
     /// Controls enemy movement
     /// </summary>
     private void FixedUpdate()
     {
+        if (visableTimer < 0)
+        {
+            inCover = !inCover;
+
+            visableTimer = visableTime + Random.Range(-visableTimerVarience, visableTimerVarience);
+        }
+
         if (inCover && Vector3.Distance(body.position, coverPoint.position) > 0.15f)
         {
             Move(coverPoint.position);

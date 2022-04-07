@@ -8,3 +8,5 @@ Artefact is fuctionally complete, code is generally messy and not refactored. Th
 v1.1
 Artefact is fully commented
 
+v1.2.0
+Moved timer check into fixed updat from update. Profiler shows artefact running at <2000fps
