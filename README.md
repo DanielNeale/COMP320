@@ -10,3 +10,6 @@ Artefact is fully commented
 
 v1.2.0
 Moved timer check into fixed updat from update. Profiler shows artefact running at <2000fps
+
+v1.2.1
+Checked for player in checkpoint call
